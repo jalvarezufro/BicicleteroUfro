@@ -87,10 +87,10 @@ public class UserManagement extends JFrame implements ActionListener {
         Object[] columNames = {"Nombre", "Rut", "Advertencias", ""};
         modeloTabla.setColumnIdentifiers(columNames);
 
-        String[] p1 = {"1", "2", "3"};
-        String[] p11 = {"3", "2", "21"};
-        String[] p12 = {"20", "15", "20"};
-        String[] p13 = {"26", "3", "1"};
+        Object[] p1 = {"1", "2", 1};
+        Object[] p11 = {"3", "2", 2};
+        Object[] p12 = {"20", "15", 3};
+        Object[] p13 = {"26", "3", 2};
 
         modeloTabla.addRow(p1);
         modeloTabla.addRow(p11);
@@ -189,15 +189,23 @@ public class UserManagement extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == warning) {
- 
-            
+            System.out.println(modeloTabla.getRowCount());
+
             for (int i = 0; i < modeloTabla.getRowCount(); i++) {
-                Object bTemp =  modeloTabla.getValueAt(i, 3);
+                Object bTemp = modeloTabla.getValueAt(i, 3);
                 Object tru = true;
                 if (bTemp.equals(tru)) {
+                    /*
                     Object tablaTemp =  modeloTabla.getValueAt(i, 2);
-                    tablaTemp = (int)tablaTemp +1;
-                    modeloTabla.setValueAt(tablaTemp, i, 2);
+                    System.out.println(tablaTemp);
+                    String s = (String) tablaTemp;
+                    int t = Integer.parseInt(s)+1;
+                    System.out.println(s);
+                    modeloTabla.setValueAt(t, i, 2);
+                     */
+                    Object tablaTemp = modeloTabla.getValueAt(i, 2);
+                    int s = (int) tablaTemp + 1;
+                    modeloTabla.setValueAt(s, i, 2);
                 }
             }
 

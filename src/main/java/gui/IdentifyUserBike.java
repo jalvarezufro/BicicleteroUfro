@@ -9,7 +9,7 @@ import javax.swing.table.*;
 
 public class IdentifyUserBike extends JFrame implements ActionListener {
 
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
     private JTable table;
     private JButton accept;
     private JButton cancel;
@@ -28,7 +28,7 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
         model.setColumnIdentifiers(columnNames);
         table = new JTable(model) {
 
-            private static final long serialVersionUID = 1L;
+            //private static final long serialVersionUID = 1L;
 
             /*@Override
             public Class getColumnClass(int column) {
@@ -48,12 +48,13 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
                 }
             }
         };
+        table.setSelectionMode(SINGLE_INTERVAL_SELECTION);
     
         Object[] row1 = {"bianchi", "rojo", true};
         model.addRow(row1);
         model.addRow(row1);
         model.addRow(row1);
-        System.out.println(model.getValueAt(0, 2));
+
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(40, 20, 400, 120);

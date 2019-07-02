@@ -54,19 +54,20 @@ public class EditUser extends JFrame implements ActionListener {
 
     public void crearText() {
         //text nombre
-        nombre = new JTextField();
+        //text nombre
+        nombre = new JTextField("Nombre");
         nombre.setBounds(16, 27, 192, 27);
         this.add(nombre);
         //text rut
-        rut = new JTextField();
+        rut = new JTextField("Rut");
         rut.setBounds(16, 77, 192, 27);
         this.add(rut);
         //text correo
-        correo = new JTextField();
+        correo = new JTextField("Correo");
         correo.setBounds(16, 127, 192, 27);
         this.add(correo);
         //text numero
-        numero = new JTextField();
+        numero = new JTextField("Numero");
         numero.setBounds(16, 177, 192, 27);
         this.add(numero);
     }
@@ -98,7 +99,7 @@ public class EditUser extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cancel) {
-            MainWindow main = new MainWindow();
+            UserManagement userMan = new UserManagement();
             dispose();
 
         }

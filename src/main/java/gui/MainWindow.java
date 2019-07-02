@@ -1,4 +1,4 @@
-package gui;
+ package gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -144,7 +144,7 @@ public class MainWindow extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == manageUsers) {
-            EditUser editUser = new EditUser("Editar usuario");
+           UserManagement userMan = new UserManagement();
             dispose();
         }
 
