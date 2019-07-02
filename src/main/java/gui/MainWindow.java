@@ -24,8 +24,8 @@ public class MainWindow extends JFrame implements ActionListener {
      * @param title
      * @throws HeadlessException
      */
-    public MainWindow(String title) throws HeadlessException {
-        super(title);
+    public MainWindow() throws HeadlessException {
+        super("Ufrocleta");
         this.setLayout(null);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -33,7 +33,7 @@ public class MainWindow extends JFrame implements ActionListener {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         this.setResizable(false);
 
-        rutTexto = new JTextField("");
+        rutTexto = new JTextField("Rut");
         rutTexto.setBounds(16, 9, 192, 27);
         add(rutTexto);
 
@@ -79,9 +79,12 @@ public class MainWindow extends JFrame implements ActionListener {
         sp.setBounds(16, 45, 594, 279);
 
         add(sp);
+        
+        
+        
+        
 
         //KeyListener
-
         // agregar keyListener
         KeyListener KeyList = new KeyListener() {
             @Override
@@ -119,6 +122,10 @@ public class MainWindow extends JFrame implements ActionListener {
 
     }
 
+    private void cargarTabla() {
+
+    }
+
     /**
      * Detects user actions on this window and executes accordingly.
      *
@@ -127,8 +134,19 @@ public class MainWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == parkBike) {
-            IdentifyUserBike identifyUser = new IdentifyUserBike("Estacionar bicicleta");
+            IdentifyUser identifyUser = new IdentifyUser("Estacionar bicicleta");
             dispose();
         }
+        
+        if(e.getSource() == unparkBike){
+            IdentifyUser identifyUser = new IdentifyUser("Quitar bicicleta");
+            dispose();
+        }
+
+        if (e.getSource() == manageUsers) {
+            EditUser editUser = new EditUser("Editar usuario");
+            dispose();
+        }
+
     }
 }

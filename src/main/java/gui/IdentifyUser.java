@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import gui.MainWindow;
 
 public class IdentifyUser extends JFrame implements ActionListener {
 
@@ -29,7 +30,7 @@ public class IdentifyUser extends JFrame implements ActionListener {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         this.setResizable(false);
 
-        rut = new JTextField();
+        rut = new JTextField("rut");
         rut.setBounds(16, 9, 192, 27);
         rut.addActionListener(this);
         add(rut);
@@ -56,9 +57,18 @@ public class IdentifyUser extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == accept) {
-            if (title.equals("Estacionar bicicleta")){
+            if (title.equals("Estacionar bicicleta")) {
+                IdentifyUserBike userBike = new IdentifyUserBike();
+                userBike.setVisible(true);
+                dispose();
+
+            } else if (title.equals("Quitar bicicleta")) {
 
             }
+            dispose();
+        }
+        if (e.getSource() == cancel) {
+            MainWindow main = new MainWindow();
             dispose();
         }
     }
