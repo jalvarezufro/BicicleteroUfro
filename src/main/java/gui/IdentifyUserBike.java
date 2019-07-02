@@ -14,8 +14,9 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
     private JButton accept;
     private JButton cancel;
 
-    public IdentifyUserBike() {
+    public IdentifyUserBike(String title) {
         this.setLayout(null);
+        this.setTitle(title);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(480, 270);

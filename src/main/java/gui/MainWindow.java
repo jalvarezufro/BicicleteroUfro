@@ -134,12 +134,12 @@ public class MainWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == parkBike) {
-            IdentifyUser identifyUser = new IdentifyUser("Estacionar bicicleta");
+            IdentifyUser identifyUser = new IdentifyUser("Ufrocleta: Estacionar bicicleta");
             dispose();
         }
         
         if(e.getSource() == unparkBike){
-            IdentifyUser identifyUser = new IdentifyUser("Quitar bicicleta");
+            IdentifyUser identifyUser = new IdentifyUser("Ufrocleta: Quitar bicicleta");
             dispose();
         }
 

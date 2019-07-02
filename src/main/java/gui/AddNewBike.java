@@ -85,6 +85,13 @@ import javax.swing.JTextField;
          */
         @Override
         public void actionPerformed(ActionEvent e) {
+            
+            if (e.getSource() == add) {
+                MainWindow mWindow = new MainWindow();
+                dispose();
+
+            }
+            
             if (e.getSource() == cancel) {
                 UserManagement userMan = new UserManagement();
                 dispose();

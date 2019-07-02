@@ -31,17 +31,17 @@ public class IdentifyUser extends JFrame implements ActionListener {
         this.setResizable(false);
 
         rut = new JTextField("rut");
-        rut.setBounds(16, 9, 192, 27);
+        rut.setBounds(144, 63, 192, 27);
         rut.addActionListener(this);
         add(rut);
 
         accept = new JButton("Aceptar");
-        accept.setBounds(16, 45, 192, 27);
+        accept.setBounds(32, 108, 192, 27);
         accept.addActionListener(this);
         add(accept);
 
         cancel = new JButton("Cancelar");
-        cancel.setBounds(224, 45, 192, 27);
+        cancel.setBounds(256, 108, 192, 27);
         cancel.addActionListener(this);
         add(cancel);
 
@@ -57,12 +57,14 @@ public class IdentifyUser extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == accept) {
-            if (title.equals("Estacionar bicicleta")) {
-                IdentifyUserBike userBike = new IdentifyUserBike();
+            if (title.equals("Ufrocleta: Estacionar bicicleta")) {
+                IdentifyUserBike userBike = new IdentifyUserBike("Ufrocleta: Seleccionar bicicleta");
                 userBike.setVisible(true);
                 dispose();
 
-            } else if (title.equals("Quitar bicicleta")) {
+            } else if (title.equals("Ufrocleta: Quitar bicicleta")) {
+                MainWindow mWindow = new MainWindow();
+                dispose();
 
             }
             dispose();
