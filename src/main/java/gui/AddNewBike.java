@@ -53,11 +53,11 @@ public class AddNewBike extends JFrame implements ActionListener {
 
     public void crearText() {
         //text nombre
-        brand = new JTextField("Nombre");
+        brand = new JTextField("Marca");
         brand.setBounds(16, 72, 192, 27);
         this.add(brand);
         //text rut
-        color = new JTextField("Rut");
+        color = new JTextField("Color");
         color.setBounds(16, 132, 192, 27);
         this.add(color);
 
