@@ -29,7 +29,7 @@ public class MainWindow extends JFrame implements ActionListener {
         this.setLayout(null);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(960, 540);
+        setSize(848, 369);
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         this.setResizable(false);
 
@@ -38,17 +38,17 @@ public class MainWindow extends JFrame implements ActionListener {
         add(rutTexto);
 
         parkBike = new JButton("Estacionar bicicleta");
-        parkBike.setBounds(640, 9, 192, 27);
+        parkBike.setBounds(640, 139, 192, 27);
         parkBike.addActionListener(this);
         add(parkBike);
 
         unparkBike = new JButton("Quitar bicicleta");
-        unparkBike.setBounds(640, 45, 192, 27);
+        unparkBike.setBounds(640, 184, 192, 27);
         unparkBike.addActionListener(this);
         add(unparkBike);
 
         manageUsers = new JButton("Gestionar usuarios");
-        manageUsers.setBounds(640, 81, 192, 27);
+        manageUsers.setBounds(640, 229, 192, 27);
         manageUsers.addActionListener(this);
         add(manageUsers);
 
