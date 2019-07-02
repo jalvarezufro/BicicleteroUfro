@@ -98,6 +98,10 @@ public class EditUser extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==bike){
+            BikeManage bManage = new BikeManage();
+            dispose();
+        }
         if (e.getSource() == cancel) {
             UserManagement userMan = new UserManagement();
             dispose();

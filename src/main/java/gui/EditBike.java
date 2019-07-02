@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  *
  * @author JAVIER
  */
-public class AddNewBike extends JFrame implements ActionListener {
+public class EditBike extends JFrame implements ActionListener {
 
     private String title;
     private JTextField brand;
@@ -34,7 +34,7 @@ public class AddNewBike extends JFrame implements ActionListener {
      * @param title
      * @throws HeadlessException
      */
-    public AddNewBike(String title) throws HeadlessException {
+    public EditBike(String title) throws HeadlessException {
         super(title);
         this.setLayout(null);
 
@@ -87,23 +87,13 @@ public class AddNewBike extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == add) {
-            if (title.equals("Ufrocleta: Primera bicicleta")) {
-                UserManagement uMan = new UserManagement();
-                dispose();
-            } else {
-                BikeManage bManage = new BikeManage();
-                dispose();
-            }
+            BikeManage bManage = new BikeManage();
+            dispose();
         }
 
         if (e.getSource() == cancel) {
-            if (title.equals("Ufrocleta: Primera bicicleta")) {
-                AddNewUser nUser = new AddNewUser("Ufrocleta: Nuevo usuario");
-                dispose();
-            } else {
-                BikeManage bManage = new BikeManage();
-                dispose();
-            }
+            BikeManage bManage = new BikeManage();
+            dispose();
 
         }
 
