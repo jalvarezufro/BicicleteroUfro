@@ -15,6 +15,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -87,9 +88,8 @@ public class UserManagement extends JFrame implements ActionListener {
         Object[] columNames = {"Nombre", "Rut", "Advertencias", ""};
         modeloTabla.setColumnIdentifiers(columNames);
 
-        Object[] p1 = {"Javier","203656947", 2};
+        Object[] p1 = {"Javier", "203656947", 2};
         Object[] p11 = {"Erick", "203557132", 0};
- 
 
         modeloTabla.addRow(p1);
         modeloTabla.addRow(p11);
@@ -183,32 +183,83 @@ public class UserManagement extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == edit) {
-            EditUser eUser = new EditUser("Ufrocleta: Editar usuario");
-            dispose();
-        }
-
-        if (e.getSource() == warning) {
-
+            int cont = 0;
             for (int i = 0; i < modeloTabla.getRowCount(); i++) {
                 Object bTemp = modeloTabla.getValueAt(i, 3);
-                boolean tru = false;
                 try {
                     if (bTemp.equals(true)) {
-                        tru = true;
+                        cont++;
                     }
                 } catch (NullPointerException s) {
                 }
-                if (tru) {
+            }
+            if (cont == 1) {
+                EditUser eUser = new EditUser("Ufrocleta: Editar usuario");
+                dispose();
+            } else if (cont > 1) {
+                JOptionPane.showMessageDialog(null, "Hay mas de un usuario seleccionado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un usuario");
+            }
+        }
 
-                    Object tablaTemp = modeloTabla.getValueAt(i, 2);
-                    int s = (int) tablaTemp + 1;
-                    modeloTabla.setValueAt(s, i, 2);
-                } else {
+        if (e.getSource() == warning) {
+            int cont = 0;
+            for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                Object bTemp = modeloTabla.getValueAt(i, 3);
+                try {
+                    if (bTemp.equals(true)) {
+                        cont++;
+                    }
+                } catch (NullPointerException s) {
+                }
+            }
+            if (cont == 1) {
+                for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                    Object bTemp = modeloTabla.getValueAt(i, 3);
+                    boolean tru = false;
+                    try {
+                        if (bTemp.equals(true)) {
+                            tru = true;
+                        }
+                    } catch (NullPointerException s) {
+                    }
+                    if (tru) {
+
+                        Object tablaTemp = modeloTabla.getValueAt(i, 2);
+                        int s = (int) tablaTemp + 1;
+                        modeloTabla.setValueAt(s, i, 2);
+                    } else {
+
+                    }
 
                 }
-
+            } else if (cont > 1) {
+                JOptionPane.showMessageDialog(null, "Hay mas de un usuario seleccionado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un usuario");
             }
 
+        }
+
+        if (e.getSource() == delete) {
+            int cont = 0;
+            for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                Object bTemp = modeloTabla.getValueAt(i, 3);
+                try {
+                    if (bTemp.equals(true)) {
+                        cont++;
+                    }
+                } catch (NullPointerException s) {
+                }
+            }
+            if (cont == 1) {
+
+            } else if (cont > 1) {
+                JOptionPane.showMessageDialog(null, "Hay mas de un usuario seleccionado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un usuario");
+            }
         }
         if (e.getSource() == cancel) {
             MainWindow mWindow = new MainWindow();
