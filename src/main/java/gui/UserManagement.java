@@ -189,28 +189,28 @@ public class UserManagement extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == warning) {
-            System.out.println(modeloTabla.getRowCount());
 
             for (int i = 0; i < modeloTabla.getRowCount(); i++) {
                 Object bTemp = modeloTabla.getValueAt(i, 3);
-                Object tru = true;
-                if (bTemp.equals(tru)) {
-                    /*
-                    Object tablaTemp =  modeloTabla.getValueAt(i, 2);
-                    System.out.println(tablaTemp);
-                    String s = (String) tablaTemp;
-                    int t = Integer.parseInt(s)+1;
-                    System.out.println(s);
-                    modeloTabla.setValueAt(t, i, 2);
-                     */
+                boolean tru = false;
+                try {
+                    if (bTemp.equals(true)) {
+                        tru = true;
+                    }
+                } catch (NullPointerException s) {
+                }
+                if (tru) {
+
                     Object tablaTemp = modeloTabla.getValueAt(i, 2);
                     int s = (int) tablaTemp + 1;
                     modeloTabla.setValueAt(s, i, 2);
+                } else {
+
                 }
+
             }
 
         }
-
         if (e.getSource() == cancel) {
             MainWindow mWindow = new MainWindow();
             dispose();
