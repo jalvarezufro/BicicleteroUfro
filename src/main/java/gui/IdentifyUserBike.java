@@ -1,64 +1,82 @@
 package gui;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
+import static javax.swing.ListSelectionModel.*;
+import javax.swing.table.*;
 
 public class IdentifyUserBike extends JFrame implements ActionListener {
 
-    private String title;
-    private JTextField rut;
+    private static final long serialVersionUID = 1L;
+    private JTable table;
     private JButton accept;
     private JButton cancel;
 
-    /**
-     * Constructor of this window.
-     *
-     * @param title
-     * @throws HeadlessException
-     */
-    public IdentifyUserBike(String title) throws HeadlessException {
-        super(title);
+    public IdentifyUserBike() {
         this.setLayout(null);
-
-        this.title = title;
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(480, 270);
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         this.setResizable(false);
 
-        rut = new JTextField();
-        rut.setBounds(16, 9, 192, 27);
-        rut.addActionListener(this);
-        add(rut);
+        Object[] columnNames = {"Marca", "Color", ""};
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(columnNames);
+        table = new JTable(model) {
+
+            private static final long serialVersionUID = 1L;
+
+            /*@Override
+            public Class getColumnClass(int column) {
+            return getValueAt(0, column).getClass();
+            }*/
+            @Override
+            public Class getColumnClass(int column) {
+                switch (column) {
+                    case 0:
+                        return String.class;
+                    case 1:
+                        return String.class;
+                    case 2:
+                        return Boolean.class;
+                    default:
+                        return Boolean.class;
+                }
+            }
+        };
+    
+        Object[] row1 = {"bianchi", "rojo", true};
+        model.addRow(row1);
+        model.addRow(row1);
+        model.addRow(row1);
+        System.out.println(model.getValueAt(0, 2));
+
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(40, 20, 400, 120);
+        getContentPane().add(scrollPane);
 
         accept = new JButton("Aceptar");
-        accept.setBounds(16, 45, 192, 27);
+        accept.setBounds(45, 180, 192, 27);
+        this.getContentPane().add(accept);
         accept.addActionListener(this);
-        add(accept);
-
+        
         cancel = new JButton("Cancelar");
-        cancel.setBounds(224, 45, 192, 27);
+        cancel.setBounds(245,180,192,27);
+        this.getContentPane().add(cancel);
         cancel.addActionListener(this);
-        add(cancel);
-
-        setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
     }
 
-    /**
-     * Detects user actions on this window and executes accordingly.
-     *
-     * @param e
-     */
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == accept) {
-            if (title.equals("Estacionar bicicleta")){
-
-            }
+          if (e.getSource() == cancel) {
+            IdentifyUser iUser = new IdentifyUser("Estacionar bicicleta");
             dispose();
         }
     }
