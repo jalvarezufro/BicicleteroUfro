@@ -41,7 +41,7 @@ public class EditBike extends JFrame implements ActionListener {
         this.title = title;
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(480, 270);
+        setSize(450, 270);
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         this.setResizable(false);
         crearText();
@@ -53,12 +53,12 @@ public class EditBike extends JFrame implements ActionListener {
 
     public void crearText() {
         //text nombre
-        brand = new JTextField("Nombre");
-        brand.setBounds(16, 27, 192, 27);
+        brand = new JTextField("Marca");
+        brand.setBounds(16, 72, 192, 27);
         this.add(brand);
         //text rut
-        color = new JTextField("Rut");
-        color.setBounds(16, 77, 192, 27);
+        color = new JTextField("Color");
+        color.setBounds(16, 132, 192, 27);
         this.add(color);
 
     }
@@ -67,12 +67,12 @@ public class EditBike extends JFrame implements ActionListener {
 
         //boton aceptar usuario
         add = new JButton("Agregar");
-        add.setBounds(240, 90, 192, 27);
+        add.setBounds(240, 72, 192, 27);
         this.add(add);
         add.addActionListener(this);
         //boton cancelar
         cancel = new JButton("Cancelar");
-        cancel.setBounds(240, 150, 192, 27);
+        cancel.setBounds(240, 132, 192, 27);
         this.add(cancel);
         cancel.addActionListener(this);
 
