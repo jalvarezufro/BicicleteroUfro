@@ -96,6 +96,11 @@ import javax.swing.JTextField;
          */
         @Override
         public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==add){
+                AddNewBike aBike = new AddNewBike("Ufrocleta: Primera bicileta");
+                dispose();
+            }
+            
             if (e.getSource() == cancel) {
                 UserManagement userMan = new UserManagement();
                 dispose();

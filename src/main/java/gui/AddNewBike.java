@@ -19,13 +19,11 @@ import javax.swing.JTextField;
  *
  * @author JAVIER
  */
-    public class AddNewUser extends JFrame implements ActionListener {
+    public class AddNewBike extends JFrame implements ActionListener {
 
         private String title;
-        private JTextField nombre;
-        private JTextField rut;
-        private JTextField correo;
-        private JTextField numero;
+        private JTextField brand;
+        private JTextField color;
 
         private JButton add;
         private JButton cancel;
@@ -36,7 +34,7 @@ import javax.swing.JTextField;
          * @param title
          * @throws HeadlessException
          */
-        public AddNewUser(String title) throws HeadlessException {
+        public AddNewBike(String title) throws HeadlessException {
             super(title);
             this.setLayout(null);
 
@@ -55,27 +53,20 @@ import javax.swing.JTextField;
 
         public void crearText() {
             //text nombre
-            nombre = new JTextField("Nombre");
-            nombre.setBounds(16, 27, 192, 27);
-            this.add(nombre);
+            brand = new JTextField("Nombre");
+            brand.setBounds(16, 27, 192, 27);
+            this.add(brand);
             //text rut
-            rut = new JTextField("Rut");
-            rut.setBounds(16, 77, 192, 27);
-            this.add(rut);
-            //text correo
-            correo = new JTextField("Correo");
-            correo.setBounds(16, 127, 192, 27);
-            this.add(correo);
-            //text numero
-            numero = new JTextField("Numero");
-            numero.setBounds(16, 177, 192, 27);
-            this.add(numero);
+            color = new JTextField("Rut");
+            color.setBounds(16, 77, 192, 27);
+            this.add(color);
+
         }
 
         public void crearButtons() {
 
             //boton aceptar usuario
-            add = new JButton("Aceptar");
+            add = new JButton("Agregar");
             add.setBounds(240, 90, 192, 27);
             this.add(add);
             add.addActionListener(this);
