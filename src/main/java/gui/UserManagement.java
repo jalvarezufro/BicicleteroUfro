@@ -87,10 +87,9 @@ public class UserManagement extends JFrame implements ActionListener {
         Object[] columNames = {"Nombre", "Rut", "Advertencias", ""};
         modeloTabla.setColumnIdentifiers(columNames);
 
-        Object[] p1 = {"1", "2", 1};
-        Object[] p11 = {"3", "2", 2};
-        Object[] p12 = {"20", "15", 3};
-        Object[] p13 = {"26", "3", 2};
+        Object[] p1 = {"Javier","203656947", 2};
+        Object[] p11 = {"Erick", "203557132", 0};
+ 
 
         modeloTabla.addRow(p1);
         modeloTabla.addRow(p11);

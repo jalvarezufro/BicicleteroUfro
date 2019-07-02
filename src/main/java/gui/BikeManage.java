@@ -75,9 +75,9 @@ public class BikeManage extends JFrame implements ActionListener {
         //crear modelo
         Object[] columnNames = {"Marca", "Color", ""};
 
-        DefaultTableModel modeloTabla = new DefaultTableModel();
-        modeloTabla.setColumnIdentifiers(columnNames);
-        table = new JTable(modeloTabla) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(columnNames);
+        table = new JTable(model) {
 
             //private static final long serialVersionUID = 1L;
 
@@ -101,16 +101,16 @@ public class BikeManage extends JFrame implements ActionListener {
         };
         table.setSelectionMode(SINGLE_INTERVAL_SELECTION);
 
-        Object[] row1 = {"bianchi", "rojo", true};
-        modeloTabla.addRow(row1);
-        modeloTabla.addRow(row1);
-        modeloTabla.addRow(row1);
+        Object[] row1 = {"Bianchi", "rojo", false};
+        model.addRow(row1);
+        Object[] row = {"Merida", "negro", false};
+        model.addRow(row);
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(16, 20, 543, 120);
         getContentPane().add(scrollPane);
 
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modeloTabla);
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
         table.setRowSorter(sorter);
 
         setVisible(true);

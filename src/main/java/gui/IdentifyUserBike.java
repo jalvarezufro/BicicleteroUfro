@@ -50,12 +50,11 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
             }
         };
         table.setSelectionMode(SINGLE_INTERVAL_SELECTION);
-    
-        Object[] row1 = {"bianchi", "rojo", true};
-        model.addRow(row1);
-        model.addRow(row1);
-        model.addRow(row1);
 
+        Object[] row1 = {"Bianchi", "rojo", false};
+        model.addRow(row1);
+        Object[] row = {"Merida", "negro", false};
+        model.addRow(row);
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(40, 20, 400, 120);
@@ -65,19 +64,18 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
         accept.setBounds(45, 180, 192, 27);
         this.getContentPane().add(accept);
         accept.addActionListener(this);
-        
+
         cancel = new JButton("Cancelar");
-        cancel.setBounds(245,180,192,27);
+        cancel.setBounds(245, 180, 192, 27);
         this.getContentPane().add(cancel);
         cancel.addActionListener(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
-          if (e.getSource() == cancel) {
+        if (e.getSource() == cancel) {
             IdentifyUser iUser = new IdentifyUser("Estacionar bicicleta");
             dispose();
         }
