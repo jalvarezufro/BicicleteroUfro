@@ -15,6 +15,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -134,13 +135,46 @@ public class BikeManage extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == edit) {
-            EditBike eBike = new EditBike("Ufrocleta: Editar bicicleta");
-            dispose();
+            int cont = 0;
+            for (int i = 0; i < table.getRowCount(); i++) {
+                Object bTemp = table.getValueAt(i, 2);                
+                try {
+                    if (bTemp.equals(true)) {
+                        cont++;
+                    }
+                } catch (NullPointerException s) {
+                }             
+            }
+            if(cont==1){
+                EditBike eBike = new EditBike("Ufrocleta: Editar bicicleta");
+                dispose();
+            }else if(cont>1){
+                JOptionPane.showMessageDialog(null,"Hay mas de una bicicleta seleccionada");
+            }else{
+                JOptionPane.showMessageDialog(null,"Seleccione una bicicleta");
+            }
+            
         }
 
         if (e.getSource() == delete) {
-            BikeManage bManage = new BikeManage();
-            dispose();
+            int cont = 0;
+            for (int i = 0; i < table.getRowCount(); i++) {
+                Object bTemp = table.getValueAt(i, 2);                
+                try {
+                    if (bTemp.equals(true)) {
+                        cont++;
+                    }
+                } catch (NullPointerException s) {
+                }             
+            }
+            if(cont==1){
+                BikeManage bManage = new BikeManage();
+                dispose();
+            }else if(cont>1){
+                JOptionPane.showMessageDialog(null,"Hay mas de una bicicleta seleccionada");
+            }else{
+                JOptionPane.showMessageDialog(null,"Seleccione una bicicleta");
+            }          
 
         }
 
