@@ -80,8 +80,25 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
             dispose();
         }
         if(e.getSource() == accept){
-            MainWindow uManage = new MainWindow();
-            dispose();
+            int cont = 0;
+            for (int i = 0; i < table.getRowCount(); i++) {
+                Object bTemp = table.getValueAt(i, 2);                
+                try {
+                    if (bTemp.equals(true)) {
+                        cont++;
+                    }
+                } catch (NullPointerException s) {
+                }             
+            }
+            if(cont==1){
+                MainWindow uManage = new MainWindow();
+                dispose();
+            }else if(cont>1){
+                JOptionPane.showMessageDialog(null,"Hay mas de una bicicleta seleccionada");
+            }else{
+                JOptionPane.showMessageDialog(null,"Seleccione una bicicleta");
+            } 
+            
         }
         
     }
