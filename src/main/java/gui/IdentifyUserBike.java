@@ -76,8 +76,13 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cancel) {
-            IdentifyUser iUser = new IdentifyUser("Estacionar bicicleta");
+            IdentifyUser iUser = new IdentifyUser("Ufrocleta: Estacionar bicicleta");
             dispose();
         }
+        if(e.getSource() == accept){
+            MainWindow uManage = new MainWindow();
+            dispose();
+        }
+        
     }
 }
