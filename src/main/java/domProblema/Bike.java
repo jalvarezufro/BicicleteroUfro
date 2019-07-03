@@ -5,7 +5,7 @@ public class Bike {
     private String color;
     private String brand;
 
-    public Bike(String color, String brand) {
+    public Bike(String brand, String color) {
         this.color = color;
         this.brand = brand;
     }

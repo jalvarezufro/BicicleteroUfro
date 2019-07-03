@@ -5,10 +5,10 @@
  */
 package gui;
 
+import domProblema.User;
 import domProblema.UserList;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
-import java.awt.TextField;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +27,7 @@ public class EditUser extends JFrame implements ActionListener {
     private JTextField correo;
     private JTextField numero;
     private JButton bike;
-    private JButton add;
+    private JButton accept;
     private JButton cancel;
     private String rutUser;
    
@@ -59,7 +59,6 @@ public class EditUser extends JFrame implements ActionListener {
 
     public void crearText(String rutUser) {
         //text nombre
-        //text nombre
         nombre = new JTextField(UserList.findUserByRut(rutUser).getName());
         nombre.setBounds(16, 27, 192, 27);
         nombre.setEditable(false);
@@ -86,10 +85,10 @@ public class EditUser extends JFrame implements ActionListener {
         this.add(bike);
         bike.addActionListener(this);
         //boton aceptar usuario
-        add = new JButton("Aceptar");
-        add.setBounds(240, 90, 192, 27);
-        this.add(add);
-        add.addActionListener(this);
+        accept = new JButton("Aceptar");
+        accept.setBounds(240, 90, 192, 27);
+        this.add(accept);
+        accept.addActionListener(this);
         //boton cancelar
         cancel = new JButton("Cancelar");
         cancel.setBounds(240, 150, 192, 27);
@@ -107,6 +106,13 @@ public class EditUser extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bike) {
             BikeManage bManage = new BikeManage(rutUser);
+            dispose();
+        }
+        if (e.getSource() == accept) {
+            UserList.findUserByRut(rutUser).seteMail(correo.getText());
+            UserList.findUserByRut(rutUser).setPhone(numero.getText());
+            UserList.writeUsers();
+            UserManagement userMan = new UserManagement();
             dispose();
         }
         if (e.getSource() == cancel) {

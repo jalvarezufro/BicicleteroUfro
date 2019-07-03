@@ -171,9 +171,7 @@ public class UserManagement extends JFrame implements ActionListener {
 
     }
 
-    private void cargarTabla() {
 
-    }
 
     /**
      * Detects user actions on this window and executes accordingly.

@@ -42,7 +42,6 @@ public class BikeManage extends JFrame implements ActionListener {
     /**
      * Constructor of this window.
      *
-     * @param title
      * @throws HeadlessException
      */
     public BikeManage(String rut) throws HeadlessException {
@@ -105,11 +104,10 @@ public class BikeManage extends JFrame implements ActionListener {
             }
         };
         table.setSelectionMode(SINGLE_INTERVAL_SELECTION);
-
-        Object[] row1 = {"Bianchi", "rojo", false};
-        model.addRow(row1);
-        Object[] row = {"Merida", "negro", false};
-        model.addRow(row);
+        for (int i = 0; i < UserList.findUserByRut(rut).getBikes().size(); i++) {
+            Object[] row = {UserList.findUserByRut(rut).getBikes().get(i).getBrand(), UserList.findUserByRut(rut).getBikes().get(i).getColor(), false};
+            model.addRow(row);
+        }
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(16, 20, 543, 120);
@@ -137,23 +135,26 @@ public class BikeManage extends JFrame implements ActionListener {
             String nombre = UserList.findUserByRut(rut).getName();
             String correo = UserList.findUserByRut(rut).geteMail();
             String numero = UserList.findUserByRut(rut).getPhone();
-            AddNewBike nBike = new AddNewBike("Ufrocleta: Agregar bicicleta",nombre,rut,correo,numero);
+            AddNewBike nBike = new AddNewBike("Ufrocleta: Agregar bicicleta", nombre, rut, correo, numero);
             dispose();
         }
 
         if (e.getSource() == edit) {
             int cont = 0;
+            int selected = 0;
             for (int i = 0; i < table.getRowCount(); i++) {
                 Object bTemp = table.getValueAt(i, 2);
                 try {
                     if (bTemp.equals(true)) {
                         cont++;
+                        selected = i;
                     }
                 } catch (NullPointerException s) {
                 }
             }
             if (cont == 1) {
-                EditBike eBike = new EditBike("Ufrocleta: Editar bicicleta",rut);
+                int bikeID = selected;
+                EditBike eBike = new EditBike("Ufrocleta: Editar bicicleta", rut, bikeID);
                 dispose();
             } else if (cont > 1) {
                 JOptionPane.showMessageDialog(null, "Hay mas de una bicicleta seleccionada");
@@ -165,16 +166,21 @@ public class BikeManage extends JFrame implements ActionListener {
 
         if (e.getSource() == delete) {
             int cont = 0;
+            int selected = 0;
             for (int i = 0; i < table.getRowCount(); i++) {
                 Object bTemp = table.getValueAt(i, 2);
                 try {
                     if (bTemp.equals(true)) {
                         cont++;
+                        selected = i;
                     }
                 } catch (NullPointerException s) {
                 }
             }
             if (cont == 1) {
+                int bikeID = selected;
+                UserList.findUserByRut(rut).getBikes().remove(bikeID);
+                UserList.writeUsers();
                 BikeManage bManage = new BikeManage(rut);
                 dispose();
             } else if (cont > 1) {
@@ -186,7 +192,7 @@ public class BikeManage extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == back) {
-            EditUser eUser = new EditUser("Ufrocleta: Editar usuario",rut);
+            EditUser eUser = new EditUser("Ufrocleta: Editar usuario", rut);
             dispose();
         }
 

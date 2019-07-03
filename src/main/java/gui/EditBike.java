@@ -5,6 +5,8 @@
  */
 package gui;
 
+import domProblema.UserList;
+
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
@@ -22,9 +24,10 @@ import javax.swing.JTextField;
 public class EditBike extends JFrame implements ActionListener {
 
     private String title;
+    private int bikeID;
     private JTextField brand;
     private JTextField color;
-private String rutUser;
+    private String rutUser;
     private JButton add;
     private JButton cancel;
 
@@ -34,12 +37,13 @@ private String rutUser;
      * @param title
      * @throws HeadlessException
      */
-    public EditBike(String title,String rutUser) throws HeadlessException {
+    public EditBike(String title, String rutUser, int bikeID) throws HeadlessException {
         super(title);
         this.setLayout(null);
 
         this.title = title;
-        this.rutUser=rutUser;
+        this.rutUser = rutUser;
+        this.bikeID = bikeID;
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(450, 270);
@@ -88,6 +92,9 @@ private String rutUser;
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == add) {
+            UserList.findUserByRut(rutUser).getBikes().get(bikeID).setBrand(brand.getText());
+            UserList.findUserByRut(rutUser).getBikes().get(bikeID).setColor(color.getText());
+            UserList.writeUsers();
             BikeManage bManage = new BikeManage(rutUser);
             dispose();
         }

@@ -58,7 +58,7 @@ public class UserList {
             int userBikes = Integer.parseInt(userSplitTemp[0]);
 
             while (bikeCounter < userBikes) {
-                String[] bikeSplitTemp = bikeSplit[i].split(";");
+                String[] bikeSplitTemp = bikeSplit[j].split(";");
                 String marca = bikeSplitTemp[0];
                 String color = bikeSplitTemp[1];
                 Bike tempBike = new Bike(marca, color);
@@ -107,7 +107,6 @@ public class UserList {
         FileManager.writeFile("bikes.csv", datosBike);
 
     }
-
 }
 
 

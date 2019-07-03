@@ -111,4 +111,24 @@ public class Parking {
         return screen;
     }
 
+    public static void deletePark(String rut) {
+        String texto = FileManager.readFile("pantalla.csv");
+        String[] separacion = texto.split("\n");
+        String textoTemp = "Rut;Hora;Espacio;Bicicleta";
+        for (int i = 1; i < separacion.length; i++) {
+            String[] separacionTemp = separacion[i].split(";");
+
+            if (separacionTemp[0].trim().equals(rut.trim())) {
+
+            } else {
+                textoTemp = textoTemp + "\n" + separacion[i];
+  
+            }
+
+        }
+        FileManager.writeFile("pantalla.csv", textoTemp);
+        
+
+    }
+
 }

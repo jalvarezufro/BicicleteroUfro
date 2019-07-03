@@ -113,6 +113,8 @@ public class AddNewBike extends JFrame implements ActionListener {
                 dispose();
                
             } else {
+                UserList.findUserByRut(rut).getBikes().add(new Bike(color.getText(),brand.getText()));
+                UserList.writeUsers();
                 BikeManage bManage = new BikeManage(rut);
                 dispose();
             }

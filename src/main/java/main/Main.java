@@ -25,7 +25,6 @@ public class Main {
         UserList.loadUsers();
         MainWindow mainWindow = new MainWindow();
 
-
     }
 
 }
