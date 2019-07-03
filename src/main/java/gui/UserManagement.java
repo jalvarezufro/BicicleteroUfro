@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import domProblema.UserList;
 
 /**
  *
@@ -88,11 +89,6 @@ public class UserManagement extends JFrame implements ActionListener {
         Object[] columNames = {"Nombre", "Rut", "Advertencias", ""};
         modeloTabla.setColumnIdentifiers(columNames);
 
-        Object[] p1 = {"Javier", "203656947", 2};
-        Object[] p11 = {"Erick", "203557132", 0};
-
-        modeloTabla.addRow(p1);
-        modeloTabla.addRow(p11);
 
         //creacion tabla
         tabla = new JTable(modeloTabla) {
@@ -157,6 +153,18 @@ public class UserManagement extends JFrame implements ActionListener {
 
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        UserList.loadUsers();
+
+        //mostrar Usuarios
+        for (int i = 0; i < UserList.getUsers().size(); i++) {
+            String nombre = UserList.getUsers().get(i).getName();
+            String rut = UserList.getUsers().get(i).getRut();
+            int advertencias = UserList.getUsers().get(i).getWarnings();
+            Object[] rowTemp = {nombre,rut,advertencias};
+            modeloTabla.addRow(rowTemp);
+        }
+
     }
 
     private void filtros(String query) {

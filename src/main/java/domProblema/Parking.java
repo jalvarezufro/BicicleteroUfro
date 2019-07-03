@@ -97,8 +97,7 @@ public class Parking {
 
     public static String[][] loadModel() {
 
-        FileManager fMan = new FileManager();
-        String texto = fMan.readFile("pantalla.csv");
+        String texto = FileManager.readFile("pantalla.csv");
         System.out.println(texto);
         String[] separacion = texto.split("[\n]");
         String[][] screen = new String[separacion.length - 1][3];
