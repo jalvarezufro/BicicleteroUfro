@@ -1,3 +1,5 @@
+package domProblema;
+
 import java.util.ArrayList;
 
 public class Parking {
@@ -5,6 +7,18 @@ public class Parking {
     private static int capacity = 25;
     private static ArrayList<User> users = new ArrayList<>();
     private static User[] bikeRack = new User[capacity];
+
+
+    public static int getCapacity() {
+        return capacity;
+    }
+
+    public static void setCapacity(int capacity) {
+        Parking.capacity = capacity;
+    }
+
+
+
     public static User[] getBikeRack() {
         return bikeRack;
     }

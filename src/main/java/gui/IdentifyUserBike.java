@@ -1,10 +1,14 @@
 package gui;
 
+import domProblema.User;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
 import static javax.swing.ListSelectionModel.*;
+
 import javax.swing.table.*;
 
 public class IdentifyUserBike extends JFrame implements ActionListener {
@@ -14,7 +18,7 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
     private JButton accept;
     private JButton cancel;
 
-    public IdentifyUserBike(String title) {
+    public IdentifyUserBike(String title, User user) {
         this.setLayout(null);
         this.setTitle(title);
 
@@ -51,10 +55,10 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
         };
         table.setSelectionMode(SINGLE_INTERVAL_SELECTION);
 
-        Object[] row1 = {"Bianchi", "rojo", false};
-        model.addRow(row1);
-        Object[] row = {"Merida", "negro", false};
-        model.addRow(row);
+        for (int i = 0; i < user.getBikes().size(); i++) {
+            Object[] row = {user.getBikes().get(i).getBrand(), user.getBikes().get(i).getColor(), false};
+            model.addRow(row);
+        }
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(40, 20, 400, 120);
@@ -79,27 +83,27 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
             IdentifyUser iUser = new IdentifyUser("Ufrocleta: Estacionar bicicleta");
             dispose();
         }
-        if(e.getSource() == accept){
+        if (e.getSource() == accept) {
             int cont = 0;
             for (int i = 0; i < table.getRowCount(); i++) {
-                Object bTemp = table.getValueAt(i, 2);                
+                Object bTemp = table.getValueAt(i, 2);
                 try {
                     if (bTemp.equals(true)) {
                         cont++;
                     }
                 } catch (NullPointerException s) {
-                }             
+                }
             }
-            if(cont==1){
+            if (cont == 1) {
                 MainWindow uManage = new MainWindow();
                 dispose();
-            }else if(cont>1){
-                JOptionPane.showMessageDialog(null,"Hay mas de una bicicleta seleccionada");
-            }else{
-                JOptionPane.showMessageDialog(null,"Seleccione una bicicleta");
-            } 
-            
+            } else if (cont > 1) {
+                JOptionPane.showMessageDialog(null, "Hay mas de una bicicleta seleccionada");
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una bicicleta");
+            }
+
         }
-        
+
     }
 }
