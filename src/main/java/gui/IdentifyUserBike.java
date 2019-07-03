@@ -73,6 +73,7 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
         cancel.setBounds(245, 180, 192, 27);
         this.getContentPane().add(cancel);
         cancel.addActionListener(this);
+        this.setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }

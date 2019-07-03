@@ -61,8 +61,13 @@ public class IdentifyUser extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == accept) {
             if (title.equals("Ufrocleta: Estacionar bicicleta")) {
-                IdentifyUserBike userBike = new IdentifyUserBike("Ufrocleta: Seleccionar bicicleta", UserList.findUserByRut(rut.getText()));
-                dispose();
+                try{IdentifyUserBike userBike = new IdentifyUserBike("Ufrocleta: Seleccionar bicicleta", UserList.findUserByRut(rut.getText()));
+                dispose();}
+                catch(Exception ev){
+                    JOptionPane.showMessageDialog(null, "No se encontro el rut");
+                    
+                }
+               
             } else if (title.equals("Ufrocleta: Quitar bicicleta")) {
                 MainWindow mWindow = new MainWindow();
                 dispose();

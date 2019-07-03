@@ -53,7 +53,7 @@ public class UserList {
         String[] bikeSplit = bikeText.split("\n");
 
         for (int i = 1; i < userSplit.length; i++) {
-            System.out.println(i);
+
             ArrayList<Bike> bikesTemp = new ArrayList<>();
             String[] userSplitTemp = userSplit[i].split(";");
             int bikeCounter = 0;
@@ -73,7 +73,8 @@ public class UserList {
             String nombre = userSplitTemp[2];
             String rut = userSplitTemp[3];
             String numero = userSplitTemp[4];
-            int advertencia = Integer.parseInt("0");
+            userSplitTemp[5] = userSplitTemp[5].trim();
+            int advertencia = Integer.parseInt(userSplitTemp[5]);
 
             User userTemp = new User(bikesTemp, email, nombre, rut, numero, advertencia);
             users.add(userTemp);

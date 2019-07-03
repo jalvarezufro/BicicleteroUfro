@@ -115,12 +115,8 @@ public class MainWindow extends JFrame implements ActionListener {
            String [] temp = {screen[i][0],screen[i][1],screen[i][2]};
            modeloTabla.addRow(temp);
        }
-        System.out.println("olakase");
-       
-       //Cargar datos usuarios
-       UserList.loadUsers();
-        System.out.println(UserList.getUsers().get(0).getName());  
-        System.out.println("olakase");
+     
+   
         
     }
 

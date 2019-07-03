@@ -154,7 +154,7 @@ public class UserManagement extends JFrame implements ActionListener {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        UserList.loadUsers();
+      
 
         //mostrar Usuarios
         for (int i = 0; i < UserList.getUsers().size(); i++) {
