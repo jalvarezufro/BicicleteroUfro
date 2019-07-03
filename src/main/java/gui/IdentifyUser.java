@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import domProblema.Parking;
+import domProblema.UserList;
 import gui.MainWindow;
 
 public class IdentifyUser extends JFrame implements ActionListener {
@@ -58,10 +61,8 @@ public class IdentifyUser extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == accept) {
             if (title.equals("Ufrocleta: Estacionar bicicleta")) {
-                IdentifyUserBike userBike = new IdentifyUserBike("Ufrocleta: Seleccionar bicicleta");
-                userBike.setVisible(true);
+                IdentifyUserBike userBike = new IdentifyUserBike("Ufrocleta: Seleccionar bicicleta", UserList.findUserByRut(rut.getText()));
                 dispose();
-
             } else if (title.equals("Ufrocleta: Quitar bicicleta")) {
                 MainWindow mWindow = new MainWindow();
                 dispose();

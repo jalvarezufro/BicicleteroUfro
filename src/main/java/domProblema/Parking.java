@@ -1,10 +1,22 @@
+package domProblema;
+
 import java.util.ArrayList;
+import datos.FileManager;
 
 public class Parking {
 
     private static int capacity = 25;
     private static ArrayList<User> users = new ArrayList<>();
     private static User[] bikeRack = new User[capacity];
+
+    public static int getCapacity() {
+        return capacity;
+    }
+
+    public static void setCapacity(int capacity) {
+        Parking.capacity = capacity;
+    }
+
     public static User[] getBikeRack() {
         return bikeRack;
     }
@@ -82,4 +94,22 @@ public class Parking {
             System.out.println("No hay usuarios en el bicicletero.");
         }
     }
+
+    public static String[][] loadModel() {
+
+        FileManager fMan = new FileManager();
+        String texto = fMan.readFile("pantalla.csv");
+        System.out.println(texto);
+        String[] separacion = texto.split("[\n]");
+        String[][] screen = new String[separacion.length - 1][3];
+        for (int i = 1; i < separacion.length; i++) {
+            String[] screenTemp = separacion[i].split(";");
+            screen[i - 1][0] = screenTemp[0];
+            screen[i - 1][1] = screenTemp[1];
+            screen[i - 1][2] = screenTemp[2];
+
+        }
+        return screen;
+    }
+
 }

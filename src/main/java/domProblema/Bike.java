@@ -1,3 +1,5 @@
+package domProblema;
+
 public class Bike {
 
     private String color;
