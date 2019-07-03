@@ -6,6 +6,7 @@
 package main;
 
 import gui.MainWindow;
+import domProblema.Parking;
 
 /**
  *
@@ -18,6 +19,8 @@ public class Main {
      */
     public static void main(String[] args) {
         MainWindow mainWindow = new MainWindow();
+        
+        Parking.loadModel();
     }
 
 }

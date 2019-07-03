@@ -1,3 +1,5 @@
+package datos;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -6,7 +8,7 @@ import java.nio.file.Paths;
 public class FileManager {
 
     //Metodo generico que captura un archivo de texto y retorna su contenido como un String.
-    public static String readFile(String fileName) {
+    public String readFile(String fileName) {
         Path file = Paths.get(fileName);
         String data = "";
         try {
@@ -18,7 +20,7 @@ public class FileManager {
     }
 
     //Metodo generico que captura un archivo de texto y lo sobreescribe con otro texto.
-    public static void writeFile(String fileName, String data) {
+    public void writeFile(String fileName, String data) {
         Path file = Paths.get(fileName);
         try {
             Files.write(file, data.getBytes());

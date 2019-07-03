@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+ import domProblema.Parking;
 
 public class MainWindow extends JFrame implements ActionListener {
 
@@ -112,6 +113,14 @@ public class MainWindow extends JFrame implements ActionListener {
 
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        //cargar datos pantalla
+       String [][] screen = Parking.loadModel();
+       for(int i = 0; i<screen.length;i++){
+           String [] temp = {screen[i][0],screen[i][1],screen[i][2]};
+           modeloTabla.addRow(temp);
+       }
+        
     }
 
     private void filtros(String query) {
