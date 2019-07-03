@@ -5,6 +5,7 @@
  */
 package gui;
 
+import domProblema.UserList;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.TextField;
@@ -33,9 +34,10 @@ public class EditUser extends JFrame implements ActionListener {
      * Constructor of this window.
      *
      * @param title
+     * @param rutUser
      * @throws HeadlessException
      */
-    public EditUser(String title) throws HeadlessException {
+    public EditUser(String title, String rutUser) throws HeadlessException {
         super(title);
         this.setLayout(null);
 
@@ -45,29 +47,31 @@ public class EditUser extends JFrame implements ActionListener {
         setSize(480, 270);
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         this.setResizable(false);
-        crearText();
+        crearText(rutUser);
         crearButtons();
         // rut.setBounds(16, 9, 192, 27);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    public void crearText() {
+    public void crearText(String rutUser) {
         //text nombre
         //text nombre
-        nombre = new JTextField("Nombre");
+        nombre = new JTextField(UserList.findUserByRut(rutUser).getName());
         nombre.setBounds(16, 27, 192, 27);
+        nombre.setEditable(false);
         this.add(nombre);
         //text rut
-        rut = new JTextField("Rut");
+        rut = new JTextField(UserList.findUserByRut(rutUser).getRut());
         rut.setBounds(16, 77, 192, 27);
+        rut.setEditable(false);
         this.add(rut);
         //text correo
-        correo = new JTextField("Correo");
+        correo = new JTextField(UserList.findUserByRut(rutUser).geteMail());
         correo.setBounds(16, 127, 192, 27);
         this.add(correo);
         //text numero
-        numero = new JTextField("Numero");
+        numero = new JTextField(UserList.findUserByRut(rutUser).getPhone());
         numero.setBounds(16, 177, 192, 27);
         this.add(numero);
     }
@@ -98,7 +102,7 @@ public class EditUser extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==bike){
+        if (e.getSource() == bike) {
             BikeManage bManage = new BikeManage();
             dispose();
         }

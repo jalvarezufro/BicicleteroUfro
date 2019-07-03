@@ -1,8 +1,6 @@
 package domProblema;
+
 import datos.FileManager;
-
-
-
 
 import java.util.ArrayList;
 
@@ -11,7 +9,7 @@ public class UserList {
     private static ArrayList<User> users = new ArrayList<>();
 
     public static ArrayList<User> getUsers() {
-        
+
         return users;
     }
 
@@ -28,8 +26,8 @@ public class UserList {
         UserList.users = users;
     }
 
-    public static void addUser(String eMail, String name, String rut, String phone, int warnings) {
-        users.add(new User(new ArrayList<Bike>(), eMail, name, rut, phone, warnings));
+    public static void addUser(ArrayList<Bike> bikes, String eMail, String name, String rut, String phone, int warnings) {
+        users.add(new User(bikes, eMail, name, rut, phone, warnings));
     }
 
     public static void deleteUserByRut(String rut) {
@@ -41,7 +39,7 @@ public class UserList {
     }
 
     public static void loadUsers() {
-        
+
         int j = 1;
         String datosUser = "Bicicletas;Email;Nombre;Rut;Numero;Advertencias";
         String userText = FileManager.readCreate("users.csv", datosUser);
@@ -65,7 +63,7 @@ public class UserList {
                 String color = bikeSplitTemp[1];
                 Bike tempBike = new Bike(marca, color);
                 bikesTemp.add(tempBike);
-                
+
                 bikeCounter++;
                 j++;
             }
@@ -81,7 +79,37 @@ public class UserList {
 
         }
     }
+
+    public static void writeUsers() {
+        String datosUser = "Bicicletas;Email;Nombre;Rut;Numero;Advertencias";
+        String datosBike = "Marca;Color";
+        for (int i = 0; i < users.size(); i++) {
+            int bikeCounter = 0;
+            int cantBicicletas = users.get(i).getBikes().size();
+            String bicicletas = "" + cantBicicletas;
+            String email = users.get(i).geteMail();
+            String nombre = users.get(i).getName();
+            String rut = users.get(i).getRut();
+            String numero = users.get(i).getPhone();
+            String advertencia = "" + users.get(i).getWarnings();
+
+            datosUser = datosUser + "\n" + bicicletas+ ";"+ email+ ";" + nombre+ ";" + rut+ ";" + numero+ ";" + advertencia;
+
+            while (bikeCounter < cantBicicletas) {
+                String marca = users.get(i).getBikes().get(bikeCounter).getBrand();
+                String color = users.get(i).getBikes().get(bikeCounter).getColor();
+                datosBike = datosBike + "\n" +marca + ";"+color;
+                bikeCounter++;
+                
+            }
+        }
+        FileManager.writeFile("users.csv", datosUser);
+        FileManager.writeFile("bikes.csv", datosBike);
+
+    }
+
 }
+
 
 /*
 public static void loadUsers() {

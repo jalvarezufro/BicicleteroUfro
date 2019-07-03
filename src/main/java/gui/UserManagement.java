@@ -89,7 +89,6 @@ public class UserManagement extends JFrame implements ActionListener {
         Object[] columNames = {"Nombre", "Rut", "Advertencias", ""};
         modeloTabla.setColumnIdentifiers(columNames);
 
-
         //creacion tabla
         tabla = new JTable(modeloTabla) {
 
@@ -153,15 +152,13 @@ public class UserManagement extends JFrame implements ActionListener {
 
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-      
 
         //mostrar Usuarios
         for (int i = 0; i < UserList.getUsers().size(); i++) {
             String nombre = UserList.getUsers().get(i).getName();
             String rut = UserList.getUsers().get(i).getRut();
             int advertencias = UserList.getUsers().get(i).getWarnings();
-            Object[] rowTemp = {nombre,rut,advertencias};
+            Object[] rowTemp = {nombre, rut, advertencias};
             modeloTabla.addRow(rowTemp);
         }
 
@@ -202,8 +199,20 @@ public class UserManagement extends JFrame implements ActionListener {
                 }
             }
             if (cont == 1) {
-                EditUser eUser = new EditUser("Ufrocleta: Editar usuario");
-                dispose();
+                for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                    Object bTemp = modeloTabla.getValueAt(i, 3);
+                    try {
+                        //if para saber si esta el checkbox en true
+                        if (bTemp.equals(true)) {
+                            String rut = "" + modeloTabla.getValueAt(i, 1);
+                            EditUser eUser = new EditUser("Ufrocleta: Editar usuario", rut);
+                            dispose();
+                        }
+                    } catch (NullPointerException s) {
+
+                    }
+                }
+
             } else if (cont > 1) {
                 JOptionPane.showMessageDialog(null, "Hay mas de un usuario seleccionado");
             } else {
@@ -262,6 +271,23 @@ public class UserManagement extends JFrame implements ActionListener {
                 }
             }
             if (cont == 1) {
+                for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                    Object bTemp = modeloTabla.getValueAt(i, 3);
+                    try {
+                        //if para saber si esta el checkbox en true
+                        if (bTemp.equals(true)) {
+                            String rut = "" + modeloTabla.getValueAt(i, 1);
+                            UserList.deleteUserByRut(rut);
+                            UserList.writeUsers();
+                            UserManagement uMan = new UserManagement();
+                            dispose();
+                            
+
+                        }
+                    } catch (NullPointerException s) {
+
+                    }
+                }
 
             } else if (cont > 1) {
                 JOptionPane.showMessageDialog(null, "Hay mas de un usuario seleccionado");

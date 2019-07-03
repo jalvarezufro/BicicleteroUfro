@@ -99,12 +99,13 @@ public class Parking {
 
         String texto = FileManager.readFile("pantalla.csv");
         String[] separacion = texto.split("[\n]");
-        String[][] screen = new String[separacion.length - 1][3];
+        String[][] screen = new String[separacion.length - 1][4];
         for (int i = 1; i < separacion.length; i++) {
             String[] screenTemp = separacion[i].split(";");
             screen[i - 1][0] = screenTemp[0];
             screen[i - 1][1] = screenTemp[1];
             screen[i - 1][2] = screenTemp[2];
+            screen[i - 1][3] = screenTemp[3];
 
         }
         return screen;

@@ -97,7 +97,7 @@ import javax.swing.JTextField;
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource()==add){
-                AddNewBike aBike = new AddNewBike("Ufrocleta: Primera bicicleta");
+                AddNewBike aBike = new AddNewBike("Ufrocleta: Primera bicicleta",nombre.getText(),rut.getText(),correo.getText(),numero.getText());
                 dispose();
             }
             
