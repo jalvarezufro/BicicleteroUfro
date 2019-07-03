@@ -98,7 +98,7 @@ public class Parking {
     public static String[][] loadModel() {
 
         String texto = FileManager.readFile("pantalla.csv");
-        String[] separacion = texto.split("[\n]");
+        String[] separacion = texto.split("\n");
         String[][] screen = new String[separacion.length - 1][4];
         for (int i = 1; i < separacion.length; i++) {
             String[] screenTemp = separacion[i].split(";");

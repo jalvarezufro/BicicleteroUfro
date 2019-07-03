@@ -113,7 +113,7 @@ public class AddNewBike extends JFrame implements ActionListener {
                 dispose();
                
             } else {
-                BikeManage bManage = new BikeManage();
+                BikeManage bManage = new BikeManage(rut);
                 dispose();
             }
         }
@@ -123,7 +123,7 @@ public class AddNewBike extends JFrame implements ActionListener {
                 AddNewUser nUser = new AddNewUser("Ufrocleta: Nuevo usuario");
                 dispose();
             } else {
-                BikeManage bManage = new BikeManage();
+                BikeManage bManage = new BikeManage(rut);
                 dispose();
             }
 

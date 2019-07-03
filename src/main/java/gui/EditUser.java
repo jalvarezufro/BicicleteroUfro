@@ -29,6 +29,8 @@ public class EditUser extends JFrame implements ActionListener {
     private JButton bike;
     private JButton add;
     private JButton cancel;
+    private String rutUser;
+   
 
     /**
      * Constructor of this window.
@@ -52,6 +54,7 @@ public class EditUser extends JFrame implements ActionListener {
         // rut.setBounds(16, 9, 192, 27);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.rutUser=rutUser;
     }
 
     public void crearText(String rutUser) {
@@ -103,7 +106,7 @@ public class EditUser extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bike) {
-            BikeManage bManage = new BikeManage();
+            BikeManage bManage = new BikeManage(rutUser);
             dispose();
         }
         if (e.getSource() == cancel) {

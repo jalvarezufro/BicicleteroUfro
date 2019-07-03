@@ -24,7 +24,7 @@ public class EditBike extends JFrame implements ActionListener {
     private String title;
     private JTextField brand;
     private JTextField color;
-
+private String rutUser;
     private JButton add;
     private JButton cancel;
 
@@ -34,11 +34,12 @@ public class EditBike extends JFrame implements ActionListener {
      * @param title
      * @throws HeadlessException
      */
-    public EditBike(String title) throws HeadlessException {
+    public EditBike(String title,String rutUser) throws HeadlessException {
         super(title);
         this.setLayout(null);
 
         this.title = title;
+        this.rutUser=rutUser;
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(450, 270);
@@ -87,12 +88,12 @@ public class EditBike extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == add) {
-            BikeManage bManage = new BikeManage();
+            BikeManage bManage = new BikeManage(rutUser);
             dispose();
         }
 
         if (e.getSource() == cancel) {
-            BikeManage bManage = new BikeManage();
+            BikeManage bManage = new BikeManage(rutUser);
             dispose();
 
         }
