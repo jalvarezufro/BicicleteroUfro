@@ -60,12 +60,6 @@ public class MainWindow extends JFrame implements ActionListener {
         modeloTabla.addColumn("Hora");
         modeloTabla.addColumn("Espacio");
 
-        String[] p1 = {"203656947", "10:30", "25"};
-        String[] p11 = {"203557132", "8:30", "24"};
-
-
-        modeloTabla.addRow(p1);
-        modeloTabla.addRow(p11);
 
         //creacion tabla
         tabla = new JTable(modeloTabla);

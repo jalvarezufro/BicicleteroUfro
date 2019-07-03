@@ -68,7 +68,6 @@ public class IdentifyUser extends JFrame implements ActionListener {
                 dispose();
 
             }
-            dispose();
         }
         if (e.getSource() == cancel) {
             MainWindow main = new MainWindow();
