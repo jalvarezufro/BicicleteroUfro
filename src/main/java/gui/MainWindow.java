@@ -19,6 +19,8 @@ public class MainWindow extends JFrame implements ActionListener {
     private JTable tabla;
     private JTextField rutTexto;
     private DefaultTableModel modeloTabla;
+    
+
 
     /**
      * Constructor of this window.
@@ -60,6 +62,7 @@ public class MainWindow extends JFrame implements ActionListener {
         modeloTabla.addColumn("Rut");
         modeloTabla.addColumn("Hora");
         modeloTabla.addColumn("Espacio");
+        modeloTabla.addColumn("Bicicleta");
 
 
         //creacion tabla
@@ -112,7 +115,7 @@ public class MainWindow extends JFrame implements ActionListener {
         //cargar datos pantalla
        String [][] screen = Parking.loadModel();
        for(int i = 0; i<screen.length;i++){
-           String [] temp = {screen[i][0],screen[i][1],screen[i][2]};
+           String [] temp = {screen[i][0],screen[i][1],screen[i][2],screen[i][3]};
            modeloTabla.addRow(temp);
        }
      
@@ -127,9 +130,7 @@ public class MainWindow extends JFrame implements ActionListener {
 
     }
 
-    private void cargarTabla() {
 
-    }
 
     /**
      * Detects user actions on this window and executes accordingly.
