@@ -71,7 +71,6 @@ public class IdentifyUser extends JFrame implements ActionListener {
 
             } else if (title.equals("Ufrocleta: Quitar bicicleta")) {
                 Parking.deletePark(rut.getText());
-                System.out.println(rut.getText());
                 MainWindow mWindow = new MainWindow();
 
                 dispose();

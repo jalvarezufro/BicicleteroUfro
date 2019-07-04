@@ -129,7 +129,13 @@ public class IdentifyUserBike extends JFrame implements ActionListener {
                 if(pos2==0){
                     JOptionPane.showMessageDialog(null, "No hay espacios disponibles en el bicicletero");
                 }else{
-                    String text=FileManager.readFile("pantalla.csv")+"\n"+rut.getText()+";"+hour+":"+minutes+";"+pos2+";"+table.getValueAt(pos, 0)+"/"+table.getValueAt(pos, 1);
+                    String datosPantalla = "Rut;Hora;Espacio;Bicicleta";
+                    String [] pantallaSplit = FileManager.readFile("pantalla.csv").split("\n");
+                    String text = datosPantalla;
+                    for(int i = 1; i<pantallaSplit.length;i++){
+                        text = text + "\n"+ pantallaSplit[i];
+                    }
+                    text=text+"\n"+rut.getText()+";"+hour+":"+minutes+";"+pos2+";"+table.getValueAt(pos, 0)+"/"+table.getValueAt(pos, 1);
                     FileManager.writeFile("pantalla.csv",text);
                     MainWindow uManage = new MainWindow();               
                     dispose();

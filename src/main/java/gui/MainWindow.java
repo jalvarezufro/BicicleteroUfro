@@ -37,7 +37,7 @@ public class MainWindow extends JFrame implements ActionListener {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         this.setResizable(false);
 
-        rutTexto = new JTextField("Rut");
+        rutTexto = new JTextField("Buscar por rut");
         rutTexto.setBounds(16, 9, 192, 27);
         add(rutTexto);
 

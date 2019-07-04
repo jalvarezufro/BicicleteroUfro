@@ -39,7 +39,7 @@ public class UserList {
     }
 
     public static void loadUsers() {
-
+try{
         int j = 1;
         String datosUser = "Bicicletas;Email;Nombre;Rut;Numero;Advertencias";
         String userText = FileManager.readCreate("users.csv", datosUser);
@@ -78,6 +78,10 @@ public class UserList {
             users.add(userTemp);
 
         }
+}
+catch(Exception e){
+    loadUsers();
+}
     }
 
     public static void writeUsers() {

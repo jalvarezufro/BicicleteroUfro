@@ -54,7 +54,7 @@ public class UserManagement extends JFrame implements ActionListener {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         this.setResizable(false);
 
-        rutTexto = new JTextField("Rut");
+        rutTexto = new JTextField("Buscar por rut");
         rutTexto.setBounds(16, 9, 192, 27);
         add(rutTexto);
 
@@ -78,7 +78,7 @@ public class UserManagement extends JFrame implements ActionListener {
         warning.addActionListener(this);
         add(warning);
 
-        cancel = new JButton("Cancelar");
+        cancel = new JButton("Volver");
         cancel.setBounds(580, 334, 120, 27);
         cancel.addActionListener(this);
         add(cancel);
@@ -244,6 +244,7 @@ public class UserManagement extends JFrame implements ActionListener {
                         Object tablaTemp = modeloTabla.getValueAt(i, 2);
                         int s = (int) tablaTemp + 1;
                         modeloTabla.setValueAt(s, i, 2);
+                        UserList.getUsers().get(i).setWarnings(s);
                     } else {
 
                     }
